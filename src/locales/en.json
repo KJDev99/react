@@ -25,7 +25,7 @@
     "paragraph1": "Our company embodies one of the most important principles of modern business - an individual approach to each client. We always strive to establish trusting relationships with our customers.",
     "paragraph2": "Often, those who contact us become our business partners and friends, whose wishes never go unnoticed by our company's employees.",
     "paragraph3": "Join our growing family of satisfied partners!",
-    "imageAlt": "UTI Transit team working"
+    "imageAlt": "RAM Trans Group team working"
   },
   "certificate": {
     "title": "Ram Trans Group",
@@ -132,7 +132,7 @@
   },
   "map": {
     "title": "Our Location",
-    "iframeTitle": "UTI Transit Office Location",
+    "iframeTitle": "RAM Trans Group Office Location",
     "officeTitle": "Head Office",
     "addressLabel": "Address",
     "address": "Tashkent, Uzbekistan",
@@ -142,7 +142,7 @@
     "hours": "Mon-Fri: 9:00 AM - 6:00 PM"
   },
   "footer": {
-    "logoAlt": "UTI Transit Logo",
+    "logoAlt": "RAM Trans Group Logo",
     "tagline": "Your reliable logistics partner",
     "addressTitle": "Address",
     "address": "Uzbekistan, Tashkent\nYakkasaray district, st. 5",
@@ -150,6 +150,6 @@
     "hours": "Mon-Fri: 9:00 AM - 6:00 PM",
     "contactsTitle": "Contacts",
     "emailTitle": "E-mail",
-    "copyright": "© 2023 UTI Transit. All rights reserved."
+    "copyright": "© 2023 RAM Trans Group. All rights reserved."
   }
 }

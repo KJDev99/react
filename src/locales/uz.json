@@ -25,7 +25,7 @@
     "paragraph1": "Bizning kompaniyamiz zamonaviy biznesning eng muhim tamoyillaridan birini - har bir mijozga individual yondashuvni amalga oshiradi. Biz doimo mijozlarimiz bilan ishonchli munosabatlarni o'rnatishga intilamiz.",
     "paragraph2": "Ko'pincha bizga murojaat qilganlar bizning biznes hamkorlarimiz va do'stlarimizga aylanadi, ularning istaklari kompaniyamiz xodimlari tomonidan e'tiborsiz qoldirilmaydi.",
     "paragraph3": "Mamnun hamkorlarimizning o'sayotgan oilasiga qo'shiling!",
-    "imageAlt": "UTI Transit jamoasi ishlayotgani"
+    "imageAlt": "RAM Trans Group jamoasi ishlayotgani"
   },
   "certificate": {
     "title": "Ram Trans Group",
@@ -132,7 +132,7 @@
   },
   "map": {
     "title": "Bizning Manzilimiz",
-    "iframeTitle": "UTI Transit Ofis Manzili",
+    "iframeTitle": "RAM Trans Group Ofis Manzili",
     "officeTitle": "Bosh Ofis",
     "addressLabel": "Manzil",
     "address": "Toshkent, O'zbekiston",
@@ -142,7 +142,7 @@
     "hours": "Dushanba-Juma: 9:00 - 18:00"
   },
   "footer": {
-    "logoAlt": "UTI Transit logosi",
+    "logoAlt": "RAM Trans Group logosi",
     "tagline": "Ishonchli logistika hamkoringiz",
     "addressTitle": "Manzil",
     "address": "O'zbekiston, Toshkent\nYakkasaroy tumani, 5-ko'cha",
@@ -150,6 +150,6 @@
     "hours": "Dushanba-Juma: 9:00 - 18:00",
     "contactsTitle": "Kontaktlar",
     "emailTitle": "Elektron pochta",
-    "copyright": "© 2023 UTI Transit. Barcha huquqlar himoyalangan."
+    "copyright": "© 2023 RAM Trans Group. Barcha huquqlar himoyalangan."
   }
 }

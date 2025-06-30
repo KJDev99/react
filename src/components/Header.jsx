@@ -115,7 +115,7 @@ const Header = () => {
               <img
                 src="/logo.svg"
                 className="max-w-[100px] h-[60px]"
-                alt="UTI Transit Logo"
+                alt="RAM Trans Group Logo"
                 width="100"
               />
             </a>
@@ -140,7 +140,7 @@ const Header = () => {
             <motion.img
               src="logo.svg"
               className="max-w-[80px] h-auto"
-              alt="UTI Transit Logo"
+              alt="RAM Trans Group Logo"
               width="100"
               whileHover={{ scale: 1.05 }}
             />
