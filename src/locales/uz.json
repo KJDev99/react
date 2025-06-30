@@ -1,0 +1,155 @@
+{
+  "menu": {
+    "services": "Xizmatlar",
+    "about": "Biz haqimizda",
+    "partners": "Hamkorlar",
+    "certificates": "Sertifikatlar",
+    "countries": "Mamlakatlar",
+    "news": "Yangiliklar"
+  },
+  "hero": {
+    "title": "O'zbekistondagi yuk tashish kompaniyasi",
+    "subtitle": "Biz sizning biznesingiz uchun har qanday murakkablikdagi yuk tashishni optimallashtiramiz va tashkil qilamiz"
+  },
+  "services": {
+    "title": "Keng doiradagi logistika xizmatlari",
+    "automobile": "Avtomobil yuk tashish",
+    "aviation": "Aviatsiya yuk tashish",
+    "sea": "Dengiz yuk tashish",
+    "multimodal": "Multimodal yuk tashish",
+    "rail": "Temir yo'l yuk tashish",
+    "combined": "Kombinatsiyalangan yuk tashish"
+  },
+  "about": {
+    "title": "Biz Haqimizda",
+    "paragraph1": "Bizning kompaniyamiz zamonaviy biznesning eng muhim tamoyillaridan birini - har bir mijozga individual yondashuvni amalga oshiradi. Biz doimo mijozlarimiz bilan ishonchli munosabatlarni o'rnatishga intilamiz.",
+    "paragraph2": "Ko'pincha bizga murojaat qilganlar bizning biznes hamkorlarimiz va do'stlarimizga aylanadi, ularning istaklari kompaniyamiz xodimlari tomonidan e'tiborsiz qoldirilmaydi.",
+    "paragraph3": "Mamnun hamkorlarimizning o'sayotgan oilasiga qo'shiling!",
+    "imageAlt": "UTI Transit jamoasi ishlayotgani"
+  },
+  "certificate": {
+    "title": "Ram Trans Group",
+    "paragraph1": "Biz, Ram Trans Group MChJ yuk tashish kompaniyasi, 2013 yildan beri yuk tashish bozorida faoliyat yuritib kelmoqdamiz. Ram Trans Group MChJ quyidagi transport logistika xizmatlarini ko'rsatadi:",
+    "service1": "O'zbekiston bo'ylab avtomobil yuk tashish",
+    "service2": "MDH mamlakatlari, Boltiqbo'yi va Yevropa mamlakatlariga avtomobil yuk tashish",
+    "service3": "Xalqaro temir yo'l yuk tashish",
+    "service4": "Aviayuk tashish",
+    "service5": "Xalqaro dengiz yuk tashish",
+    "service6": "Multimodal yuk tashish",
+    "paragraph2": "Bizning kompaniyamiz barcha mumkin bo'lgan transport logistika xizmatlarini taqdim etishga tayyor bo'lib, ishni yuqori sifatli bajarishni ta'minlaydi.",
+    "imageAlt": "Ram Trans Group sertifikati"
+  },
+  "certificate1": {
+    "title": "Xizmat Sertifikati",
+    "description": "Biz yuk tashishning yuqori sifatini va tartibga soluvchi organlarning talablariga muvofiqligini tasdiqlaymiz. Bu katta yutuq va mamlakatimiz mijozlari uchun xizmatlarni yaxshilashga qo'yilgan yana bir qadamdir.",
+    "imageAlt": "Sifat sertifikati"
+  },
+  "mission": {
+    "title": "Bizning Maqsadimiz",
+    "description": "Bizning asosiy maqsadimiz eng yaxshi logistika xizmatlarini taqdim etish va ushbu xizmatlarning eng yuqori sifatini kafolatlashdir."
+  },
+  "features": {
+    "timeliness": {
+      "title": "Hammasi vaqtida",
+      "description": "Yuklaringizni yetkazishning barcha shartlariga qat'iy rioya qilish"
+    },
+    "quality": {
+      "title": "Sifat",
+      "description": "Biz eng yuqori darajadagi xizmat va yordamni taqdim etamiz"
+    },
+    "professionalism": {
+      "title": "Professionalizm",
+      "description": "O'zbekistonda logistika sohasida 5 yildan ortiq tajriba"
+    },
+    "team": {
+      "title": "Jamoa",
+      "description": "Keng tajribaga ega 17 nafar mutaxassis"
+    },
+    "experience": {
+      "title": "Tajriba",
+      "description": "Vaqtida yetkazib berilgan 700 dan ortiq yuk"
+    }
+  },
+  "call": {
+    "callButton": "Biz bilan bog'lanish",
+    "closeButton": "Qo'ng'iroq modali yopish",
+    "title": "UTI-TRANSIT bilan bog'lanish",
+    "workingHours": "Ish vaqti: Dushanba-Juma (9:00–19:00)"
+  },
+  "delivery": {
+    "title": "Biz qayerga va qayerdan yetkazamiz?",
+    "subtitle": "Bizning kompaniyamiz Yevropa, MDH va Osiyo mamlakatlariga yuk yetkazib beradi"
+  },
+  "countries": {
+    "china": {
+      "name": "Xitoy",
+      "imgCode": "6561-6233-4763-b237-636237303033"
+    },
+    "russia": {
+      "name": "Rossiya",
+      "imgCode": "6435-3932-4366-b337-633261653962"
+    },
+    "lithuania": {
+      "name": "Litva",
+      "imgCode": "3231-3032-4638-b139-636331356461"
+    },
+    "spain": {
+      "name": "Ispaniya",
+      "imgCode": "3536-3731-4431-b462-643231386333"
+    },
+    "france": {
+      "name": "Fransiya",
+      "imgCode": "3732-6137-4863-a339-366432396533"
+    },
+    "italy": {
+      "name": "Italiya",
+      "imgCode": "6231-6534-4462-a261-333336396232"
+    },
+    "latvia": {
+      "name": "Latviya",
+      "imgCode": "6135-3263-4766-b130-333466396131"
+    },
+    "belarus": {
+      "name": "Belarus",
+      "imgCode": "3330-6462-4435-a338-623738643134"
+    },
+    "georgia": {
+      "name": "Gruziya",
+      "imgCode": "3961-3163-4632-b063-393836306130"
+    },
+    "uk": {
+      "name": "Buyuk Britaniya",
+      "imgCode": "6132-3064-4238-b239-613963393434"
+    },
+    "germany": {
+      "name": "Germaniya",
+      "imgCode": "3434-3633-4733-b632-626232356532"
+    },
+    "turkey": {
+      "name": "Turkiya",
+      "imgCode": "6332-3233-4931-b933-373962363339"
+    }
+  },
+  "map": {
+    "title": "Bizning Manzilimiz",
+    "iframeTitle": "UTI Transit Ofis Manzili",
+    "officeTitle": "Bosh Ofis",
+    "addressLabel": "Manzil",
+    "address": "Toshkent, O'zbekiston",
+    "phoneLabel": "Telefon",
+    "phone": "+998 78 113-99-97",
+    "hoursLabel": "Ish Soatlari",
+    "hours": "Dushanba-Juma: 9:00 - 18:00"
+  },
+  "footer": {
+    "logoAlt": "UTI Transit logosi",
+    "tagline": "Ishonchli logistika hamkoringiz",
+    "addressTitle": "Manzil",
+    "address": "O'zbekiston, Toshkent\nYakkasaroy tumani, 5-ko'cha",
+    "hoursTitle": "Ish soatlari",
+    "hours": "Dushanba-Juma: 9:00 - 18:00",
+    "contactsTitle": "Kontaktlar",
+    "emailTitle": "Elektron pochta",
+    "copyright": "© 2023 UTI Transit. Barcha huquqlar himoyalangan."
+  }
+}

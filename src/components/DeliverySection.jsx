@@ -1,89 +1,103 @@
 import React from "react";
-
-const countries = [
-  {
-    name: "China",
-    img: "https://static.tildacdn.one/tild6561-6233-4763-b237-636237303033/photo.png",
-  },
-  {
-    name: "Russia",
-    img: "https://static.tildacdn.one/tild6435-3932-4366-b337-633261653962/photo.png",
-  },
-  {
-    name: "Lithuania",
-    img: "https://static.tildacdn.one/tild3231-3032-4638-b139-636331356461/photo.png",
-  },
-  {
-    name: "Spain",
-    img: "https://static.tildacdn.one/tild3536-3731-4431-b462-643231386333/photo.png",
-  },
-  {
-    name: "France",
-    img: "https://static.tildacdn.one/tild3732-6137-4863-a339-366432396533/photo.png",
-  },
-  {
-    name: "Italy",
-    img: "https://static.tildacdn.one/tild6231-6534-4462-a261-333336396232/photo.png",
-  },
-  {
-    name: "Latvia",
-    img: "https://static.tildacdn.one/tild6135-3263-4766-b130-333466396131/photo.png",
-  },
-  {
-    name: "Belarus",
-    img: "https://static.tildacdn.one/tild3330-6462-4435-a338-623738643134/photo.png",
-  },
-  {
-    name: "Georgia",
-    img: "https://static.tildacdn.one/tild3961-3163-4632-b063-393836306130/photo.png",
-  },
-  {
-    name: "Great Britain",
-    img: "https://static.tildacdn.one/tild6132-3064-4238-b239-613963393434/photo.png",
-  },
-  {
-    name: "Germany",
-    img: "https://static.tildacdn.one/tild3434-3633-4733-b632-626232356532/photo.png",
-  },
-  {
-    name: "Türkiye",
-    img: "https://static.tildacdn.one/tild6332-3233-4931-b933-373962363339/photo.png",
-  },
-];
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const DeliverySection = () => {
+  const { t } = useTranslation();
+
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const countries = [
+    { name: "China", key: "china" },
+    { name: "Russia", key: "russia" },
+    { name: "Lithuania", key: "lithuania" },
+    { name: "Spain", key: "spain" },
+    { name: "France", key: "france" },
+    { name: "Italy", key: "italy" },
+    { name: "Latvia", key: "latvia" },
+    { name: "Belarus", key: "belarus" },
+    { name: "Georgia", key: "georgia" },
+    { name: "Great Britain", key: "uk" },
+    { name: "Germany", key: "germany" },
+    { name: "Türkiye", key: "turkey" },
+  ];
+
+  const getCountryImage = (key) => {
+    return `https://static.tildacdn.one/tild${t(
+      `countries.${key}.imgCode`
+    )}/photo.png`;
+  };
+
   return (
-    <section className="bg-white py-16 pb-8">
+    <section className="bg-white py-16 pb-8" id="countries">
       {/* Header */}
-      <div className="mx-auto mb-14 max-w-3xl px-5 text-center">
+      <motion.div
+        className="mx-auto mb-14 max-w-3xl px-5 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
         <h2 className="mb-5 text-3xl font-bold text-[#222] sm:text-4xl">
-          Where and from where we deliver?
+          {t("delivery.title")}
         </h2>
-        <p className="text-lg text-[#555] leading-relaxed">
-          Our company delivers goods to the countries of Europe, CIS and Asia
+        <p className="text-lg leading-relaxed text-[#555]">
+          {t("delivery.subtitle")}
         </p>
-      </div>
+      </motion.div>
 
       {/* Countries Grid */}
-      <div className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-5 px-5">
+      <motion.div
+        className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-5 px-5"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         {countries.map((country, index) => (
-          <div
+          <motion.div
             key={index}
             className="w-full max-w-[calc(25%-40px)] text-center max-md:max-w-[calc(50%-40px)]"
+            variants={item}
+            whileHover={{ scale: 1.05 }}
           >
-            <div className="mx-auto mb-4 h-[120px] w-[120px] overflow-hidden rounded-full border-2 border-gray-100 max-md:h-20 max-md:w-20">
-              <img
-                src={country.img}
-                alt={country.name}
+            <div className="mx-auto mb-4 h-[120px] w-[120px] overflow-hidden rounded-full border-2 border-gray-100 shadow-sm max-md:h-20 max-md:w-20">
+              <motion.img
+                src={getCountryImage(country.key)}
+                alt={t(`countries.${country.key}.name`)}
                 className="h-full w-full object-cover"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
               />
             </div>
             <h3 className="text-lg font-semibold text-[#222]">
-              {country.name}
+              {t(`countries.${country.key}.name`)}
             </h3>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

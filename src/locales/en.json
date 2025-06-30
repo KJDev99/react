@@ -1,0 +1,155 @@
+{
+  "menu": {
+    "services": "Services",
+    "about": "About Us",
+    "partners": "Partners",
+    "certificates": "Certificates",
+    "countries": "Countries",
+    "news": "News"
+  },
+  "hero": {
+    "title": "Freight forwarding company in Uzbekistan",
+    "subtitle": "We optimize and organize cargo transportation of any complexity for your business"
+  },
+  "services": {
+    "title": "Wide range of logistics services",
+    "automobile": "Automobile cargo transportation",
+    "aviation": "Aviation cargo transportation",
+    "sea": "Sea cargo transportation",
+    "multimodal": "Multimodal cargo transportation",
+    "rail": "Rail freight transportation",
+    "combined": "Combined cargo transportation"
+  },
+  "about": {
+    "title": "About Us",
+    "paragraph1": "Our company embodies one of the most important principles of modern business - an individual approach to each client. We always strive to establish trusting relationships with our customers.",
+    "paragraph2": "Often, those who contact us become our business partners and friends, whose wishes never go unnoticed by our company's employees.",
+    "paragraph3": "Join our growing family of satisfied partners!",
+    "imageAlt": "UTI Transit team working"
+  },
+  "certificate": {
+    "title": "Ram Trans Group",
+    "paragraph1": "We, the transport company Ram Trans Group LLC, have been operating in the freight transportation market since 2013. Ram Trans Group LLC provides the following transport logistics services:",
+    "service1": "Road transportation throughout Uzbekistan",
+    "service2": "Road transportation to CIS countries, Baltic states and European countries",
+    "service3": "International rail transportation",
+    "service4": "Air transportation",
+    "service5": "International sea transportation",
+    "service6": "Multimodal transportation",
+    "paragraph2": "Our company is ready to provide all possible transport logistics services while ensuring high-quality work.",
+    "imageAlt": "Ram Trans Group certificate"
+  },
+  "certificate1": {
+    "title": "Service Certificate",
+    "description": "We confirm the high quality of our cargo transportation and compliance with the requirements of regulatory authorities. This is a great achievement and another step towards improving our services for our country's clients.",
+    "imageAlt": "Service Certificate of Quality"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "description": "Our main goal is to provide the best logistics services and guarantee the best quality of these services."
+  },
+  "features": {
+    "timeliness": {
+      "title": "Everything is on time",
+      "description": "Compliance with all terms of delivery of your cargo"
+    },
+    "quality": {
+      "title": "Peculiarity",
+      "description": "We provide the highest level of service and services"
+    },
+    "professionalism": {
+      "title": "Professionalism",
+      "description": "More than 5 years of experience in logistics in Uzbekistan"
+    },
+    "team": {
+      "title": "Team",
+      "description": "17 professionals with extensive experience"
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "More than 700 deliveries completed on time"
+    }
+  },
+  "call": {
+    "callButton": "Call us",
+    "closeButton": "Close call modal",
+    "title": "Contact UTI-TRANSIT",
+    "workingHours": "Working Hours: Mon-Fri (9:00–19:00)"
+  },
+  "delivery": {
+    "title": "Where and from where we deliver?",
+    "subtitle": "Our company delivers goods to the countries of Europe, CIS and Asia"
+  },
+  "countries": {
+    "china": {
+      "name": "China",
+      "imgCode": "6561-6233-4763-b237-636237303033"
+    },
+    "russia": {
+      "name": "Russia",
+      "imgCode": "6435-3932-4366-b337-633261653962"
+    },
+    "lithuania": {
+      "name": "Lithuania",
+      "imgCode": "3231-3032-4638-b139-636331356461"
+    },
+    "spain": {
+      "name": "Spain",
+      "imgCode": "3536-3731-4431-b462-643231386333"
+    },
+    "france": {
+      "name": "France",
+      "imgCode": "3732-6137-4863-a339-366432396533"
+    },
+    "italy": {
+      "name": "Italy",
+      "imgCode": "6231-6534-4462-a261-333336396232"
+    },
+    "latvia": {
+      "name": "Latvia",
+      "imgCode": "6135-3263-4766-b130-333466396131"
+    },
+    "belarus": {
+      "name": "Belarus",
+      "imgCode": "3330-6462-4435-a338-623738643134"
+    },
+    "georgia": {
+      "name": "Georgia",
+      "imgCode": "3961-3163-4632-b063-393836306130"
+    },
+    "uk": {
+      "name": "Great Britain",
+      "imgCode": "6132-3064-4238-b239-613963393434"
+    },
+    "germany": {
+      "name": "Germany",
+      "imgCode": "3434-3633-4733-b632-626232356532"
+    },
+    "turkey": {
+      "name": "Türkiye",
+      "imgCode": "6332-3233-4931-b933-373962363339"
+    }
+  },
+  "map": {
+    "title": "Our Location",
+    "iframeTitle": "UTI Transit Office Location",
+    "officeTitle": "Head Office",
+    "addressLabel": "Address",
+    "address": "Tashkent, Uzbekistan",
+    "phoneLabel": "Phone",
+    "phone": "+998 78 113-99-97",
+    "hoursLabel": "Working Hours",
+    "hours": "Mon-Fri: 9:00 AM - 6:00 PM"
+  },
+  "footer": {
+    "logoAlt": "UTI Transit Logo",
+    "tagline": "Your reliable logistics partner",
+    "addressTitle": "Address",
+    "address": "Uzbekistan, Tashkent\nYakkasaray district, st. 5",
+    "hoursTitle": "Working hours",
+    "hours": "Mon-Fri: 9:00 AM - 6:00 PM",
+    "contactsTitle": "Contacts",
+    "emailTitle": "E-mail",
+    "copyright": "© 2023 UTI Transit. All rights reserved."
+  }
+}

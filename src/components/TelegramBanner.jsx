@@ -10,7 +10,7 @@ const TelegramBanner = () => {
             Subscribe to news in our Telegram channel
           </h2>
           <a
-            href="https://t.me/utitransit_uz"
+            href="https://t.me/M_Odiljonov001"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-[#ff131a] text-white font-semibold rounded-xl hover:bg-[#d90007] transition-colors duration-200 text-base sm:text-[16px]"

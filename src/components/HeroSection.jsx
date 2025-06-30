@@ -1,6 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { FaChevronDown } from "react-icons/fa";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const arrowVariants = {
+    bounce: {
+      y: [0, -20, 0],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    },
+  };
+
+  // Handle scroll down
+  const handleScrollDown = () => {
+    window.scrollBy({
+      top: window.innerHeight - 130,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="relative h-[80vh] min-h-[600px] pt-[105px] overflow-hidden">
       {/* Background Image with Gradient Overlay */}
@@ -17,83 +65,38 @@ const HeroSection = () => {
       {/* Content Container */}
       <div className="relative z-[2] flex max-w-[1200px] mx-auto px-5 h-full items-center lg:flex-row flex-col lg:justify-start justify-center lg:pt-0 pt-[75px] pb-[75px]">
         {/* Text Content */}
-        <div className="lg:flex-1 lg:pr-10 lg:mb-0 mb-10 text-white lg:text-left text-center animate-fadeInUp">
-          <h1 className="font-bold lg:text-[48px] md:text-[36px] text-[28px] leading-tight mb-5 font-sans">
-            Freight
-            <br className="lg:block hidden" />
-            forwarding company
-            <br className="lg:block hidden" />
-            in Uzbekistan
-          </h1>
-          <p className=" md:text-[20px] text-[18px] leading-normal opacity-90 animate-fadeInUp animation-delay-300">
-            We optimize and organize cargo transportation of any complexity for
-            your business
-          </p>
-        </div>
+        <motion.div
+          className="lg:flex-1 lg:pr-10 lg:mb-0 mb-10 text-white lg:text-left text-center"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.h1
+            className="font-bold lg:text-[48px] md:text-[36px] text-[28px] leading-tight mb-5 font-sans"
+            variants={itemVariants}
+          >
+            {t("hero.title")}
+          </motion.h1>
+          <motion.p
+            className="md:text-[20px] text-[18px] leading-normal opacity-90"
+            variants={itemVariants}
+            transition={{ delay: 0.3 }}
+          >
+            {t("hero.subtitle")}
+          </motion.p>
+        </motion.div>
       </div>
 
       {/* Scroll Down Arrow */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-[2] animate-bounce">
-        <svg viewBox="0 0 38.417 18.592" width="20" height="10">
-          <path
-            d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z"
-            fill="white"
-          />
-        </svg>
-      </div>
-
-      {/* Global styles for animations */}
-      <style jsx global>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease forwards;
-          opacity: 0;
-        }
-        .animation-delay-300 {
-          animation-delay: 0.3s;
-        }
-        .animation-delay-400 {
-          animation-delay: 0.4s;
-        }
-        @keyframes lightEffect {
-          20% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-        .animate-lightEffect {
-          animation: lightEffect 4s ease infinite;
-        }
-        @keyframes bounce {
-          0%,
-          20%,
-          50%,
-          80%,
-          100% {
-            transform: translateY(0) translateX(-50%);
-          }
-          40% {
-            transform: translateY(-20px) translateX(-50%);
-          }
-          60% {
-            transform: translateY(-10px) translateX(-50%);
-          }
-        }
-        .animate-bounce {
-          animation: bounce 2s infinite;
-        }
-      `}</style>
+      <motion.div
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-[2] cursor-pointer"
+        onClick={handleScrollDown}
+        variants={arrowVariants}
+        animate="bounce"
+        whileHover={{ scale: 1.2 }}
+      >
+        <FaChevronDown className="text-white text-2xl" />
+      </motion.div>
     </section>
   );
 };

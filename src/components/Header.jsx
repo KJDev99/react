@@ -1,16 +1,62 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaTelegram,
+  FaChevronDown,
+  FaTimes,
+  FaBars,
+  FaInstagram,
+} from "react-icons/fa";
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const languages = [
+    { code: "uz", label: "O'zbek" },
+    { code: "ru", label: "Русский" },
+    { code: "en", label: "English" },
+  ];
 
   // Toggle mobile menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    if (isLanguageOpen) setIsLanguageOpen(false);
   };
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100; // Header balandligiga moslab oling
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
 
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
   // Close mobile menu when clicking a link
-  const handleNavClick = () => {
+  const handleNavClick = (e, item) => {
+    e.preventDefault();
+    if (window.innerWidth <= 980) {
+      setIsMenuOpen(false);
+      // Kichik kechikish qo'shamiz, animatsiya tugashiga vaqt berish uchun
+      setTimeout(() => {
+        scrollToSection(item);
+      }, 300); // Bu vaqt menyu yopilish animatsiyasiga mos kelishi kerak
+    } else {
+      scrollToSection(item);
+    }
+  };
+  // Change language
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setIsLanguageOpen(false);
     if (window.innerWidth <= 980) {
       setIsMenuOpen(false);
     }
@@ -38,226 +84,291 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isLanguageOpen && !event.target.closest(".language-selector")) {
+        setIsLanguageOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isLanguageOpen]);
+
+  // Menu items
+  const menuItems = [
+    "services",
+    "about",
+    // "partners",
+    "certificates",
+    "countries",
+  ];
+
   return (
     <header className="fixed top-0 left-0 w-full z-[1000] bg-white shadow-md">
-      {/* Mobile Header */}
-      <div className="flex items-center justify-between p-4 lg:hidden">
-        <div className="flex items-center">
-          <a href="/en">
-            <img
-              src="https://static.tildacdn.one/tild3261-6434-4238-a563-303262333536/UTI_logo.png"
-              className="max-w-[100px] h-auto"
-              alt="UTI Transit Logo"
-              width="100"
-            />
-          </a>
-        </div>
-
-        <button
-          className="relative h-5 p-0 bg-transparent border-none cursor-pointer w-7"
-          onClick={toggleMenu}
-          aria-label="Toggle navigation"
-        >
-          <span
-            className={`absolute block w-full h-0.5 bg-[#331f61] left-0 transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "top-1/2 w-0 left-1/2" : "top-0"
-            }`}
-          ></span>
-          <span
-            className={`absolute block w-full h-0.5 bg-[#331f61] left-0 top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "rotate-45" : ""
-            }`}
-          ></span>
-          <span
-            className={`absolute block w-full h-0.5 bg-[#331f61] left-0 top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "-rotate-45" : "top-full"
-            }`}
-          ></span>
-        </button>
-      </div>
-
-      {/* Desktop Navigation */}
-      <nav
-        className={`lg:flex flex-col ${
-          isMenuOpen
-            ? "fixed top-0 left-0 w-full h-screen bg-white pt-[70px] overflow-y-auto translate-x-0"
-            : "hidden"
-        }`}
-      >
-        <div
-          className={`lg:flex justify-between items-center px-8 py-4 h-20 ${
-            isMenuOpen ? "flex-col p-5 h-auto" : ""
-          }`}
-        >
-          <div
-            className={`${
-              isMenuOpen ? "flex justify-center mb-5" : "hidden lg:block"
-            }`}
-          >
-            <a href="/en">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Mobile Header */}
+        <div className="flex items-center justify-between p-4 lg:hidden">
+          <div className="flex items-center">
+            <a href="/">
               <img
-                src="https://static.tildacdn.one/tild3261-6434-4238-a563-303262333536/UTI_logo.png"
-                className="max-w-[100px] h-auto"
+                src="/logo.svg"
+                className="max-w-[100px] h-[60px]"
                 alt="UTI Transit Logo"
                 width="100"
               />
             </a>
           </div>
 
-          <ul
-            className={`lg:flex list-none m-0 p-0 ${
-              isMenuOpen ? "flex-col items-center my-5" : ""
-            }`}
+          <button
+            className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#331f61]"
+            onClick={toggleMenu}
+            aria-label="Toggle navigation"
           >
-            {["services", "about", "partners", "certificates", "countries"].map(
-              (item) => (
-                <li
-                  key={item}
-                  className={`lg:px-5 ${isMenuOpen ? "py-2" : ""}`}
-                >
-                  <a
-                    href={`#${item}`}
-                    onClick={handleNavClick}
-                    className={`block text-black no-underline font-medium font-sans text-base transition-colors duration-300 hover:text-[#ff131a] ${
-                      activeSection === item ? "text-[#331f61] font-medium" : ""
-                    }`}
-                  >
-                    {item.charAt(0).toUpperCase() +
-                      item.slice(1).replace(/([A-Z])/g, " $1")}
-                  </a>
-                </li>
-              )
+            {isMenuOpen ? (
+              <FaTimes className="h-6 w-6 text-[#331f61]" />
+            ) : (
+              <FaBars className="h-6 w-6 text-[#331f61]" />
             )}
-            <li className={`lg:px-5 ${isMenuOpen ? "py-2" : ""}`}>
-              <a
-                href="https://t.me/utitransit_uz"
+          </button>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex justify-between items-center h-20">
+          <a href="/">
+            <motion.img
+              src="logo.svg"
+              className="max-w-[80px] h-auto"
+              alt="UTI Transit Logo"
+              width="100"
+              whileHover={{ scale: 1.05 }}
+            />
+          </a>
+
+          <ul className="flex list-none m-0 p-0">
+            {menuItems.map((item) => (
+              <li key={item} className="px-3">
+                <motion.a
+                  href={`#${item}`}
+                  className={`block py-2 px-3 text-black no-underline font-medium text-base transition-colors duration-300 hover:text-[#ff131a] ${
+                    activeSection === item ? "text-[#331f61] font-semibold" : ""
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {t(`menu.${item}`)}
+                </motion.a>
+              </li>
+            ))}
+            <li className="px-3">
+              <motion.a
+                href="https://t.me/M_Odiljonov001"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-black no-underline font-medium font-sans text-base transition-colors duration-300 hover:text-[#ff131a]"
+                className="block py-2 px-3 text-black no-underline font-medium text-base transition-colors duration-300 hover:text-[#ff131a]"
+                whileHover={{ scale: 1.05 }}
               >
-                News
-              </a>
+                {t("menu.news")}
+              </motion.a>
             </li>
           </ul>
 
-          <div
-            className={`lg:flex items-center ${
-              isMenuOpen ? "flex-col gap-5" : ""
-            }`}
-          >
-            <div
-              className={`flex items-center ${
-                isMenuOpen ? "justify-center" : ""
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <a
-                  href="tel:+998781139997"
-                  className="inline-flex w-7 h-7"
-                  aria-label="Phone"
-                >
-                  <svg viewBox="0 0 100 100" width="30" height="30">
-                    <path fill="#331f61" d="M50 100C77.6142 1" />
-                  </svg>
-                </a>
-                <a
-                  href="mailto:info@utitransit.uz"
-                  className="inline-flex w-7 h-7"
-                  aria-label="Email"
-                >
-                  <svg viewBox="0 0 100 100" width="30" height="30">
-                    <path fill="#331f61" d="M50 100C77.6142" />
-                  </svg>
-                </a>
-                <a
-                  href="https://t.me/utitransit_uz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-7 h-7"
-                  aria-label="Telegram"
-                >
-                  <svg viewBox="0 0 100 100" width="30" height="30">
-                    <path fill="#331f61" d="M50 100c27.614 0 " />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/utitransit/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-7 h-7"
-                  aria-label="LinkedIn"
-                >
-                  <svg viewBox="0 0 100 100" width="30" height="30">
-                    <path fill="#331f61" d="M50 100c27.6142" />
-                  </svg>
-                </a>
-              </div>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <motion.a
+                href="tel:+998990669638"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100"
+                aria-label="Phone"
+                whileHover={{ scale: 1.1 }}
+              >
+                <FaPhone className="h-5 w-5 text-[#331f61]" />
+              </motion.a>
+              <motion.a
+                href="mailto:abrorodiljonovich.2009@gmail.com"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100"
+                aria-label="Email"
+                whileHover={{ scale: 1.1 }}
+              >
+                <FaEnvelope className="h-5 w-5 text-[#331f61]" />
+              </motion.a>
+              <motion.a
+                href="https://t.me/M_Odiljonov001"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100"
+                aria-label="Telegram"
+                whileHover={{ scale: 1.1 }}
+              >
+                <FaTelegram className="h-5 w-5 text-[#331f61]" />
+              </motion.a>
+              <motion.a
+                href="https://instagram.com/ramtransgroup"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100"
+                aria-label="LinkedIn"
+                whileHover={{ scale: 1.1 }}
+              >
+                <FaInstagram className="h-5 w-5 text-[#331f61]" />
+              </motion.a>
             </div>
 
-            <div
-              className={`text-right mx-5 ${
-                isMenuOpen ? "text-center my-3" : ""
-              }`}
-            >
-              <strong>
-                <a
-                  href="tel:+998781139997"
-                  className="font-sans font-medium text-black no-underline"
-                >
-                  +998 78 113-99-97
-                </a>
-              </strong>
-              <p className="mt-1 text-sm">Mon-Fri (09:00-18:00)</p>
-            </div>
+            <div className="relative language-selector">
+              <motion.button
+                className="flex items-center gap-1 px-3 py-1 rounded-md hover:bg-gray-100"
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="text-sm font-medium">
+                  {languages.find((l) => l.code === i18n.language)?.label}
+                </span>
+                <FaChevronDown
+                  className={`h-4 w-4 transition-transform ${
+                    isLanguageOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </motion.button>
 
-            <div className={`flex gap-3 ${isMenuOpen ? "justify-center" : ""}`}>
-              <a
-                href="/uz"
-                className="font-sans text-base font-medium text-black no-underline"
-              >
-                O'zbek tilida
-              </a>
-              <a
-                href="/ru"
-                className="font-sans text-base font-medium text-black no-underline"
-              >
-                На русском
-              </a>
+              <AnimatePresence>
+                {isLanguageOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg z-10"
+                  >
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 ${
+                          i18n.language === lang.code
+                            ? "bg-gray-100 font-medium"
+                            : ""
+                        }`}
+                        onClick={() => changeLanguage(lang.code)}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
-        </div>
+        </nav>
 
-        {/* Bottom Navigation - Desktop only */}
-        <div className="items-center justify-center hidden h-10 border-t border-gray-200 lg:flex">
-          <ul className="flex p-0 m-0 list-none">
-            {["services", "about", "partners", "certificates", "countries"].map(
-              (item) => (
-                <li key={`bottom-${item}`} className="px-5">
-                  <a
-                    href={`#${item}`}
-                    className={`block text-black no-underline font-medium font-sans text-base transition-colors duration-300 hover:text-[#ff131a] ${
-                      activeSection === item ? "text-[#331f61] font-medium" : ""
-                    }`}
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden bg-white overflow-hidden"
+            >
+              <div className="flex flex-col items-center py-6">
+                <ul className="w-full px-4 space-y-4">
+                  {menuItems.map((item) => (
+                    <motion.li
+                      key={`mobile-${item}`}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <a
+                        href={`#${item}`}
+                        onClick={(e) => handleNavClick(e, item)}
+                        className={`block py-3 px-4 text-lg font-medium rounded-md transition-colors ${
+                          activeSection === item
+                            ? "bg-[#331f61] text-white"
+                            : "text-gray-800 hover:bg-gray-100"
+                        }`}
+                      >
+                        {t(`menu.${item}`)}
+                      </a>
+                    </motion.li>
+                  ))}
+                  <motion.li
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
                   >
-                    {item.charAt(0).toUpperCase() +
-                      item.slice(1).replace(/([A-Z])/g, " $1")}
-                  </a>
-                </li>
-              )
-            )}
-            <li className="px-5">
-              <a
-                href="https://t.me/utitransit_uz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-black no-underline font-medium font-sans text-base transition-colors duration-300 hover:text-[#ff131a]"
-              >
-                News
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+                    <a
+                      href="https://t.me/M_Odiljonov001"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleNavClick}
+                      className="block py-3 px-4 text-lg font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                    >
+                      {t("menu.news")}
+                    </a>
+                  </motion.li>
+                </ul>
+
+                <div className="w-full px-4 mt-8">
+                  <div className="flex justify-center gap-4 mb-6">
+                    <motion.a
+                      href="tel:+998990669638"
+                      className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100"
+                      aria-label="Phone"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <FaPhone className="h-6 w-6 text-[#331f61]" />
+                    </motion.a>
+                    <motion.a
+                      href="mailto:abrorodiljonovich.2009@gmail.com"
+                      className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100"
+                      aria-label="Email"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <FaEnvelope className="h-6 w-6 text-[#331f61]" />
+                    </motion.a>
+                    <motion.a
+                      href="https://t.me/M_Odiljonov001"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100"
+                      aria-label="Telegram"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <FaTelegram className="h-6 w-6 text-[#331f61]" />
+                    </motion.a>
+                    <motion.a
+                      href="https://instagram.com/ramtransgroup"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100"
+                      aria-label="LinkedIn"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <FaInstagram className="h-6 w-6 text-[#331f61]" />
+                    </motion.a>
+                  </div>
+
+                  <div className="flex justify-center gap-4">
+                    {languages.map((lang) => (
+                      <motion.button
+                        key={`mobile-lang-${lang.code}`}
+                        className={`px-4 py-2 rounded-md ${
+                          i18n.language === lang.code
+                            ? "bg-[#331f61] text-white"
+                            : "bg-gray-100 text-gray-800"
+                        }`}
+                        onClick={() => changeLanguage(lang.code)}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {lang.label}
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 };

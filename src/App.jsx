@@ -11,6 +11,7 @@ import MissionSection from "./components/MissionSection";
 import FeaturesSection from "./components/FeaturesSection";
 import CallSection from "./components/CallSection";
 import DeliverySection from "./components/DeliverySection";
+import MapSection from "./components/MapSection";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -21,14 +22,15 @@ const App = () => {
         <HeroSection />
         <ServicesSection />
         <AboutSection />
-        <PartnersSection />
-        <TelegramBanner />
+        {/* <PartnersSection /> */}
+        {/* <TelegramBanner /> */}
+        <FeaturesSection />
         <CertificateSection />
         <ServiceCertificate />
         <MissionSection />
-        <FeaturesSection />
         <CallSection />
         <DeliverySection />
+        <MapSection />
       </main>
       <Footer />
     </div>

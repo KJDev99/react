@@ -1,83 +1,181 @@
 import React from "react";
-import { FiPhone, FiMail } from "react-icons/fi";
-import { FaTelegramPlane } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { FiPhone, FiMail, FiMapPin, FiClock } from "react-icons/fi";
+import { FaTelegramPlane, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const socialLinks = [
+    {
+      icon: <FiPhone size={20} />,
+      href: "tel:+998990669638",
+      label: "Phone",
+    },
+    {
+      icon: <FiMail size={20} />,
+      href: "mailto:abrorodiljonovich.2009@gmail.com",
+      label: "Email",
+    },
+    {
+      icon: <FaTelegramPlane size={20} />,
+      href: "https://t.me/M_Odiljonov001",
+      label: "Telegram",
+    },
+    {
+      icon: <FaInstagram size={20} />,
+      href: "https://instagram.com/ramtransgroup",
+      label: "LinkedIn",
+    },
+  ];
+
   return (
     <footer className="bg-[#331f61] text-white py-16">
-      <div className="mx-auto flex max-w-[1200px] flex-wrap justify-between gap-8 px-5">
-        {/* Logo & Social */}
-        <div className="w-full sm:w-[calc(25%-30px)]">
-          <a href="/" className="inline-block mb-4">
-            <img
-              src="https://static.tildacdn.one/tild3861-3830-4139-b463-633434626266/photo.png"
-              alt="Company Logo"
-              className="w-[50px] h-auto"
-            />
-          </a>
-          <div className="mt-5 flex gap-4">
-            <a
-              href="tel:+998781139997"
-              aria-label="Phone"
-              className="text-[#aa95d6] hover:scale-110 transition-transform"
-            >
-              <FiPhone size={24} />
+      <div className="mx-auto max-w-[1200px] px-5">
+        <motion.div
+          className="flex flex-wrap justify-between gap-8"
+          initial="hidden"
+          whileInView="visible"
+          variants={container}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {/* Logo & Social */}
+          <motion.div className="w-full sm:w-[calc(25%-30px)]" variants={item}>
+            <a href="/" className="inline-block mb-6">
+              <img
+                src="/logo.svg"
+                alt={t("footer.logoAlt")}
+                className="w-12 h-auto"
+              />
             </a>
-            <a
-              href="mailto:info@utitransit.uz"
-              aria-label="Email"
-              className="text-[#aa95d6] hover:scale-110 transition-transform"
-            >
-              <FiMail size={24} />
-            </a>
-            <a
-              href="https://t.me/utitransit_uz"
-              aria-label="Telegram"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#aa95d6] hover:scale-110 transition-transform"
-            >
-              <FaTelegramPlane size={24} />
-            </a>
-          </div>
-        </div>
+            <p className="mb-6 text-sm text-[#aa95d6]">{t("footer.tagline")}</p>
+            <div className="flex gap-4">
+              {socialLinks.map((link, index) => (
+                <motion.a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="text-[#aa95d6] hover:text-white transition-colors"
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {link.icon}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* Address */}
-        <div className="w-full sm:w-[calc(25%-30px)]">
-          <h4 className="text-2xl mb-4">Address</h4>
-          <p className="text-base leading-relaxed">
-            Uzbekistan, Tashkent Yakkasaray st., 5<br />
-            <strong>Working hours:</strong>
-            <br />
-            Mon-Fri (9:00–18:00)
-          </p>
-        </div>
+          {/* Address */}
+          <motion.div
+            className="w-full sm:w-[calc(25%-30px)]"
+            variants={item}
+            transition={{ delay: 0.1 }}
+          >
+            <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <FiMapPin /> {t("footer.addressTitle")}
+            </h4>
+            <address className="not-italic text-base leading-relaxed">
+              {t("footer.address")}
+              <br />
+              <div className="mt-3 flex items-start gap-2">
+                <FiClock className="mt-1 flex-shrink-0" />
+                <span>
+                  <strong>{t("footer.hoursTitle")}:</strong>
+                  <br />
+                  {t("footer.hours")}
+                </span>
+              </div>
+            </address>
+          </motion.div>
 
-        {/* Phone */}
-        <div className="w-full sm:w-[calc(25%-30px)]">
-          <h4 className="text-2xl mb-4">Phone</h4>
-          <p className="text-base">
-            <a
-              href="tel:+998781139997"
-              className="hover:text-[#aa95d6] transition"
-            >
-              +998 78 113‑99‑97
-            </a>
-          </p>
-        </div>
+          {/* Contacts */}
+          <motion.div
+            className="w-full sm:w-[calc(25%-30px)]"
+            variants={item}
+            transition={{ delay: 0.2 }}
+          >
+            <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <FiPhone /> {t("footer.contactsTitle")}
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="tel:+998990669638"
+                  className="flex items-center gap-2 hover:text-[#aa95d6] transition-colors"
+                >
+                  +998 99 066-96-38
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+998933858385"
+                  className="flex items-center gap-2 hover:text-[#aa95d6] transition-colors"
+                >
+                  +998 93 385-83-85
+                </a>
+              </li>
+            </ul>
+          </motion.div>
 
-        {/* Email */}
-        <div className="w-full sm:w-[calc(25%-30px)]">
-          <h4 className="text-2xl mb-4">E-mail</h4>
-          <p className="text-base">
-            <a
-              href="mailto:info@utitransit.uz"
-              className="hover:text-[#aa95d6] transition"
-            >
-              info@utitransit.uz
-            </a>
-          </p>
-        </div>
+          {/* Email */}
+          <motion.div
+            className="w-full sm:w-[calc(25%-30px)]"
+            variants={item}
+            transition={{ delay: 0.3 }}
+          >
+            <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <FiMail /> {t("footer.emailTitle")}
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="mailto:abrorodiljonovich.2009@gmail.com"
+                  className="flex items-center gap-2 hover:text-[#aa95d6] transition-colors"
+                >
+                  info@utitransit.uz
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+        </motion.div>
+
+        {/* Copyright */}
+        <motion.div
+          className="mt-16 pt-6 border-t border-[#5a448d] text-center text-sm text-[#aa95d6]"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <p>{t("footer.copyright")}</p>
+        </motion.div>
       </div>
     </footer>
   );
