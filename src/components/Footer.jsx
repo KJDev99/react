@@ -159,7 +159,7 @@ const Footer = () => {
                   href="mailto:abrorodiljonovich.2009@gmail.com"
                   className="flex items-center gap-2 hover:text-[#aa95d6] transition-colors"
                 >
-                  info@utitransit.uz
+                  abrorodiljonovich.2009@gmail.com
                 </a>
               </li>
             </ul>
